@@ -1,0 +1,23 @@
+import pymysql
+
+# 打开数据库连接
+conn = pymysql.connect(host='localhost',port = 3306,
+                        database= 'crawler',user = 'root',
+                        password='jiushide',charset='utf8')
+
+#获取操作游标
+cursor = conn.cursor()
+
+try:
+    # content = []
+    # content.append(("Honkong state","www.baidu.com"))
+    # cursor.executemany('insert into tb_result values (default,%s, %s)',
+    #                     content)#执行批量写入操作
+    cursor.execute('alter table tb_result AUTO_INCREMENT=17')#执行单条语句
+    conn.commit()#真正提交数据库
+
+except:
+    print("error!")
+
+conn.close()
+
